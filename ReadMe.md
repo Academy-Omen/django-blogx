@@ -117,7 +117,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 ```
@@ -133,3 +133,73 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 <!-- exmaple -->
 <link rel="stylesheet" href="{% static 'css/style.css' %}"">
 ```
+
+-> Create Models and register to admin interface
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+#  create superuser
+python manage.py createsuperuser
+python manage.py runserver
+```
+
+-> Tell django where to get static files in development
+```py
+# core.urls.py
+from django.conf.urls.static import static
+from django.conf import settings
+
+# .
+# .
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+```
+
+-> Add ckeditor to installed app and add the settings
+```py
+# settings.py
+INSTALLED_APPS = [
+
+# .
+# .
+
+    'ckeditor',
+    'ckeditor_uploader',
+]
+
+# CKEditor settigs
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': '100%',
+    },
+}
+```
+
+-> Add ckeditor urls
+```py
+# core.urls.py
+# .
+# .
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('blog.urls', namespace='blog')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+]
+
+```
+
+-> Collect statics all static so as to copy ckeditor required media files
+```bash
+python manage.py collectstatic
+```
+
+
+
