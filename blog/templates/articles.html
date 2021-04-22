@@ -9,12 +9,13 @@
     <!-- Boxicon awesome icon -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{% static 'css/style.css' %}"">
+    
   </head>
   <body>
 
     <!-- header -->
-    <header>
-      <nav class = "navbar">
+    
+    <nav class = "navbar">
         <div class = "container">
           <a href = "{% url 'blog:home' %}" class = "navbar-brand">Academy.Omen</a>
           <div class = "navbar-nav">
@@ -22,24 +23,22 @@
             <a href = "">about</a>
           </div>
         </div>
-      </nav>
-      <div class = "banner">
-        <div class = "container">
-          <h1 class = "banner-title">
-            <span>Omen.</span> Bloggies
-          </h1>
-          <p>everything you need to know about building a Sass with Django</p>
-        </div>
-      </div>
-    </header>
-    <!-- end of header -->
+    </nav>
     
-    <!-- featured -->
-    <section class = "featured" id = "featured">
-      <div class = "container">
+    <!-- end of header -->
+
+    <div class = "container">
         <div class = "title">
-          <h2>Featured articles</h2>
+          <h2>All Articles</h2>
         </div>
+        <div class="article-meta">
+            <span class="tag">django</span>
+            <span class="tag">php</span>
+            <span class="tag">development</span>
+            <a class="back-button" href="">All Articles</a>
+        </div>
+
+        <hr>
 
         <div class = "featured-content">
           <!-- item -->
@@ -53,31 +52,9 @@
               <a href = "#">make an awesome art portfolio for college or university</a>
             </div>
           </div>
-          <!-- end of item -->  
+          <!-- end of item -->
         </div>
-      </div>
-    </section>
-    <!-- end of featured -->
-
-    <!-- about -->
-    <section class = "about" id = "about">
-      <div class = "container">
-        <div class = "about-content">
-          <div>
-            <img src = "{% static 'images/about.jpg' %}" alt = "">
-          </div>
-          <div class = "about-text">
-            <div class = "title">
-              <h2>Catherine Doe</h2>
-              <p>art & design is my passion</p>
-            </div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id totam voluptatem saepe eius ipsum nam provident sapiente, natus et vel eligendi laboriosam odit eos temporibus impedit veritatis ut, illo deserunt illum voluptate quis beatae quod. Necessitatibus provident dicta consectetur labore!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam corrupti natus, eos quia recusandae voluptatem veniam modi officiis minima provident rem sint porro fuga quos tempora ea suscipit vero velit sed laudantium eaque necessitatibus maxime!</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- end of about -->
+    </div>
 
     <!-- footer -->
     <footer>
