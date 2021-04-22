@@ -123,7 +123,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 ```
 
 
--> Add the css files in static/css, images in static/images and the html in blog/templates
+-> Download [static files](link) and place the css files in static/css, images in static/images and the html in blog/templates
 
 -> Load the static files in the html files
 ```html
