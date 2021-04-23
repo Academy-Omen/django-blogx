@@ -30,10 +30,13 @@ class ArticleManager(models.Manager):
 
 
 class Tag(models.Model):
-	name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
 
-	def __str__(self):
-		return self.name
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse('blog:articles_tag_list', args=[self.name])
 
 
 class Article(models.Model):

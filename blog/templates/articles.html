@@ -34,7 +34,7 @@
         </div>
         <div class="article-meta">
             {% for tag in tags %}
-            <span class="tag">{{ tag.name }}</span>
+            <span class="tag"><a href="">{{ tag.name }}</a></span>
             {% endfor %}
             <a class="back-button" href="{% url 'blog:articles' %}">All Articles</a>
         </div>
