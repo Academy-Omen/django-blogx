@@ -43,7 +43,7 @@ class Article(models.Model):
 
     headline = models.CharField(max_length=200)
     sub_headline = models.CharField(max_length=200, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True, upload_to="images", default="/images/placeholder.png")
+    image = models.ImageField(null=True, blank=True, upload_to="article", default="placeholder.png")
     body = RichTextUploadingField(null=True, blank=True)
     featured = models.BooleanField(default=False)
     tags = models.ManyToManyField(Tag, blank=True)

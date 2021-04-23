@@ -20,6 +20,7 @@
           <a href = "{% url 'blog:home' %}" class = "navbar-brand">Academy.Omen</a>
           <div class = "navbar-nav">
             <a href = "{% url 'blog:home' %}">home</a>
+            <a href = "{% url 'blog:articles' %}">articles</a>
             <a href = "">about</a>
           </div>
         </div>
@@ -32,27 +33,29 @@
           <h2>All Articles</h2>
         </div>
         <div class="article-meta">
-            <span class="tag">django</span>
-            <span class="tag">php</span>
-            <span class="tag">development</span>
-            <a class="back-button" href="">All Articles</a>
+            {% for tag in tags %}
+            <span class="tag">{{ tag.name }}</span>
+            {% endfor %}
+            <a class="back-button" href="{% url 'blog:articles' %}">All Articles</a>
         </div>
 
         <hr>
 
         <div class = "featured-content">
+          {% for article in articles %}
           <!-- item -->
           <div class = "featured-item">
             <div class = "featured-img">
-              <img src = "{% static 'images/sample.jpg' %}" alt = "">
-              <span><i class='bx bx-calendar-star'></i> June 21</span>
-              <span>Art & Design</span>
+              <img src = "{{ article.image.url }}" alt = "">
+              <span><i class='bx bx-calendar-star'></i>{{ article.publish|date:"M Y" }}</span>
+              <span>{{ article.sub_headline }}</span>
             </div>
             <div class = "featured-title">
-              <a href = "#">make an awesome art portfolio for college or university</a>
+              <a href = "#">{{ article.headline }}</a>
             </div>
           </div>
-          <!-- end of item -->
+          <!-- end of item -->  
+          {% endfor %}
         </div>
     </div>
 

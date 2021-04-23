@@ -144,6 +144,24 @@ python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
 ```
+```py
+
+# blog admin.py file
+from django.contrib import admin
+from . import models
+
+
+admin.site.register(models.Tag)
+admin.site.register(models.Profile)
+
+
+
+@admin.register(models.Article)
+class ArticleAdmin(admin.ModelAdmin):
+    list_display = ('headline', 'status', 'slug', 'author')
+    prepopulated_fields = {'slug': ('headline',), }
+
+```
 
 -> Tell django where to get static files in development
 ```py
@@ -202,3 +220,20 @@ urlpatterns = [
 python manage.py collectstatic
 ```
 
+-> Add content to your database
+
+-> Update home views and add to home page
+
+```py
+
+def home(request):
+
+    # feature articles on the home page
+    featured = Article.articlemanager.filter(featured=True)[0:3]
+
+    context = {
+        'articles': featured
+    }
+
+    return render(request, 'index.html', context)
+```
