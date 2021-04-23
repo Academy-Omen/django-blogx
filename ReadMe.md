@@ -1,5 +1,7 @@
 ## Build A Blog With Django
 
+-> Download [starter files for this project](https://github.com/Academy-Omen/django-blogx/tree/starter)
+
 -> Create Virtual environment
 ```bash
 # Windows
@@ -121,16 +123,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 ```
+-> Place the css files in static/css, images in static/images and the html in blog/templates
 
-
--> Download [static files](link) and place the css files in static/css, images in static/images and the html in blog/templates
 
 -> Load the static files in the html files
 ```html
 <!-- place this at top -->
 {% load static %}
 
-<!-- exmaple -->
+<!-- example -->
 <link rel="stylesheet" href="{% static 'css/style.css' %}"">
 ```
 
@@ -200,6 +201,4 @@ urlpatterns = [
 ```bash
 python manage.py collectstatic
 ```
-
-
 

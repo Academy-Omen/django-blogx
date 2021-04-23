@@ -61,8 +61,8 @@ class Article(models.Model):
     objects = models.Manager()  # default manager
     articlemanager = ArticleManager()  # custom manager
 
-    def get_absolute_url(self):
-        return reverse('blog:article', args=[self.slug])
+    # def get_absolute_url(self):
+    #     return reverse('blog:article', args=[self.slug])
 
     class Meta:
         ordering = ('-publish',)
