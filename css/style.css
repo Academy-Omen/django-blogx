@@ -262,6 +262,11 @@ header{
     cursor: pointer;
 }
 
+.tag a{
+    text-decoration: none;
+    color: white;
+}
+
 .tag:active{
     background-color: var(--blue);
 }
