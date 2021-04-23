@@ -8,6 +8,37 @@
     <!-- Boxicon awesome icon -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="css/style.css">
+    <style type="text/css">
+      img{
+        max-width: 100%;
+        object-fit: cover;
+      }
+    
+      .featured_image{
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+    
+      .post-container{
+          width: 900px;
+          margin: 0 auto;
+          padding-top: 20px;
+          padding-bottom: 20px;
+      }
+    
+      .author-pic{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+    
+      @media screen and (max-width: 900px){
+        .post-container{
+          width: 95%;
+        }
+      }
+    </style>
     
   </head>
   <body>
@@ -32,7 +63,7 @@
         <img class="featured_img" src="images/sample.jpg">
         <!-- start article details -->
         <div class="article-info">
-          <div class="article-info-content display-center">
+          <div class="article-info-content">
             <div class="display-center">
               <img class="author-pic" src="images/sample.jpg" alt="">
               <h6>Omen on 34-56-45</h6>
@@ -42,7 +73,7 @@
               <span class="tag">tag</span>
               <span class="tag">tag</span>
               <span class="tag">tag</span>
-              <a class="back-button" href="">&laquo View All Articles</a>
+              <a class="back-button" href="">All Articles</a>
             </div>
           </div>
         </div>

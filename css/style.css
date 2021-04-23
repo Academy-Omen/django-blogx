@@ -106,19 +106,12 @@ header{
 /* Form */
 
 
-
 form {
     outline: 0;
     float: left;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     border-radius: 4px;
   }
-
-/* @media screen and (max-width: 900px){
-    form{
-        max-height: 42px;
-    }
-} */
   
   form > .textbox {
     outline: 0;
@@ -160,9 +153,24 @@ form {
   }
   
   form > .button:hover {
-    background-color: rgba(0, 150, 136, 0.8);
+    background-color: var(--blue);
   }
 
+@media screen and (min-width: 460px){
+    form{
+        margin-right: 1rem;
+    }
+
+}
+@media screen and (max-width: 460px){
+
+    form {
+        box-shadow: none;
+    }
+    form > .textbox{
+        width: 64%;
+    }
+}
 /* end form */
 
 /* featured */
@@ -205,9 +213,6 @@ form {
     overflow: hidden;
 }
 
-.post-img img{
-    max-width: 50px;
-}
 .featured-img::after{
     position: absolute;
     content: "";
@@ -307,17 +312,6 @@ form {
     background-color: var(--blue);
 }
 
-.featured_image{
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.post-container{
-    width: 900px;
-    margin: 0 auto;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
 
 .back-button{
     padding: 8px 10px;
@@ -332,22 +326,6 @@ form {
     background-color: #4285f4;
     border-radius: 5px;
 }
-
-
-.author-pic{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-
-@media screen and (max-width: 900px){
-    .post-container{
-        width: 95%;
-    }
-}
-
 
 
 /* footer */
