@@ -34,9 +34,6 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
-    
-    def get_absolute_url(self):
-        return reverse('blog:articles_tag_list', args=[self.name])
 
 
 class Article(models.Model):

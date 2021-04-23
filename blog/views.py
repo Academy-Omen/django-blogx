@@ -15,17 +15,9 @@ def home(request):
     return render(request, 'index.html', context)
 
 
-def articles(request, tag = None):
+def articles(request):
     
-    
-    
-
-    # all articles on the home page
     articles = Article.articlemanager.all()
-
-    # filtering by category
-    if tag:
-        articles = Article.articlemanager.filter(tags=tag)
 
     tags = Tag.objects.all()
 
