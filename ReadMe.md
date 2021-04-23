@@ -222,7 +222,7 @@ python manage.py collectstatic
 
 -> Add content to your database
 
--> Update home views and add to home page
+-> Update home views and add load data on template
 
 ```py
 
@@ -236,4 +236,81 @@ def home(request):
     }
 
     return render(request, 'index.html', context)
+```
+
+-> Update articles views and add load data on template
+
+```py
+# Django Q objects use to create complex queries
+from django.db.models import Q
+
+def articles(request):
+
+    # get query from request
+    query = request.GET.get('query')
+    # print(query)
+    # Set query to '' if None
+    if query == None:
+        query = ''
+
+    # articles = Article.articlemanager.all()
+    # search for query in headline, sub headline, body
+    articles = Article.articlemanager.filter(
+        Q(headline__icontains=query) |
+        Q(sub_headline__icontains=query) |
+        Q(body__icontains=query)
+    )
+
+    tags = Tag.objects.all()
+
+    context = {
+        'articles': articles,
+        'tags': tags,
+    }
+
+    return render(request, 'articles.html', context)
+```
+
+-> Add get_absolute_url to Article model which will be used to get a single article
+```py
+
+# models.py file
+
+    def get_absolute_url(self):
+        return reverse('blog:article', args=[self.slug])
+
+    class Meta:
+        ordering = ('-publish',)
+```
+
+-> Update the blog urls file
+```py
+# .
+# .
+
+urlpatterns = [
+    path('', views.home, name='home'),
+    path('articles/', views.articles, name='articles'),
+
+    # update the article url
+    path('<slug:article>/', views.article, name='article'),
+]
+
+# .
+# .
+```
+
+-> Update articles views and add load data on template
+```py
+
+def article(request, article):
+
+    article = get_object_or_404(Article, slug=article, status='published')
+
+    context = {
+        'article': article
+    }
+
+    return render(request, 'article.html', context)
+    
 ```

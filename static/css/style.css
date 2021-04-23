@@ -287,6 +287,13 @@ form {
     align-items: center;
 }
 
+@media screen and (max-width: 457px){
+
+    .display-center {
+        display: block;
+    }
+}
+
 .article-info-content{ 
     justify-content: space-between;
 }
