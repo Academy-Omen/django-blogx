@@ -45,6 +45,12 @@ def articles(request):
     return render(request, 'articles.html', context)
 
 
-def article(request):
+def article(request, article):
 
-    return render(request, 'article.html')
+    article = get_object_or_404(Article, slug=article, status='published')
+
+    context = {
+        'article': article
+    }
+
+    return render(request, 'article.html', context)

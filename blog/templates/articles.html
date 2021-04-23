@@ -32,14 +32,12 @@
         <div class = "title">
           <h2>All Articles</h2>
         </div>
-        <div class="search-bar">
-          <form method="GET">
-            <input type="text" id="query" name="query" class="textbox" placeholder="Search">
-            <button type = "submit" class="button">
-              <i class='bx bx-search'></i>
-            </button>
-          </form>
-        </div>
+        <form method="GET">
+          <input type="text" id="query" name="query" class="textbox" placeholder="Search">
+          <button type = "submit" class="button">
+            <i class='bx bx-search'></i>
+          </button>
+        </form>
         <div class="article-meta">
             <a class="back-button" href="{% url 'blog:articles' %}">All Articles</a>
             {% for tag in tags %}
@@ -54,12 +52,14 @@
           <!-- item -->
           <div class = "featured-item">
             <div class = "featured-img">
-              <img src = "{{ article.image.url }}" alt = "">
-              <span><i class='bx bx-calendar-star'></i>{{ article.publish|date:"M Y" }}</span>
-              <span>{{ article.sub_headline }}</span>
+              <a href="{{ article.get_absolute_url }}">
+                <img src = "{{ article.image.url }}" alt = "">
+                <span><i class='bx bx-calendar-star'></i>{{ article.publish|date:"M Y" }}</span>
+                <span>{{ article.sub_headline }}</span>
+              </a>
             </div>
             <div class = "featured-title">
-              <a href = "#">{{ article.headline }}</a>
+              <a href = "{{ article.get_absolute_url }}">{{ article.headline }}</a>
             </div>
           </div>
           <!-- end of item -->
