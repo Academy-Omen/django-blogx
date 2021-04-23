@@ -1,6 +1,9 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from .models import Profile, Tag, Article
-from django.views.generic import ListView
+
+# Django Q objects use to create complex queries
+# https://docs.djangoproject.com/en/3.2/topics/db/queries/#complex-lookups-with-q-objects
+from django.db.models import Q
 
 
 def home(request):
@@ -16,8 +19,21 @@ def home(request):
 
 
 def articles(request):
-    
-    articles = Article.articlemanager.all()
+
+    # get query from request
+    query = request.GET.get('query')
+    # print(query)
+    # Set query to '' if None
+    if query == None:
+        query = ''
+
+    # articles = Article.articlemanager.all()
+    # search for query in headline, sub headline, body
+    articles = Article.articlemanager.filter(
+        Q(headline__icontains=query) |
+        Q(sub_headline__icontains=query) |
+        Q(body__icontains=query)
+    )
 
     tags = Tag.objects.all()
 

@@ -160,7 +160,7 @@ form {
   }
   
   form > .button:hover {
-    background-color: rgba(0, 150, 136, 0.8);
+    background-color: var(--blue);
   }
 
 /* end form */

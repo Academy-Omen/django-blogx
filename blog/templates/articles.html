@@ -34,7 +34,7 @@
         </div>
         <div class="search-bar">
           <form method="GET">
-            <input type="text" class="textbox" placeholder="Search">
+            <input type="text" id="query" name="query" class="textbox" placeholder="Search">
             <button type = "submit" class="button">
               <i class='bx bx-search'></i>
             </button>
@@ -62,7 +62,9 @@
               <a href = "#">{{ article.headline }}</a>
             </div>
           </div>
-          <!-- end of item -->  
+          <!-- end of item -->
+          {% empty %}
+			      <h3>No Article found...</h3>  
           {% endfor %}
         </div>
     </div>
