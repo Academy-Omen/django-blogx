@@ -47,15 +47,19 @@
           <!-- item -->
           <div class = "featured-item">
             <div class = "featured-img">
-              <img src = "{{ article.image.url }}" alt = "">
-              <span><i class='bx bx-calendar-star'></i>{{ article.publish|date:"M Y" }}</span>
-              <span>{{ article.sub_headline }}</span>
+              <a href="{{ article.get_absolute_url }}">
+                <img src = "{{ article.image.url }}" alt = "">
+                <span><i class='bx bx-calendar-star'></i>{{ article.publish|date:"M Y" }}</span>
+                <span>{{ article.sub_headline }}</span>
+              </a>
             </div>
             <div class = "featured-title">
-              <a href = "#">{{ article.headline }}</a>
+              <a href = "{{ article.get_absolute_url }}">{{ article.headline }}</a>
             </div>
           </div>
-          <!-- end of item -->  
+          <!-- end of item -->
+          {% empty %}
+			      <h3>No Featured Article at the Moment...</h3>  
           {% endfor %}
         </div>
       </div>

@@ -102,33 +102,76 @@ header{
     font-weight: 300;
     word-spacing: 2px;
 }
-.banner form{
-    background: #fff;
-    border-radius: 2rem;
-    padding: 0.6rem 1rem;
-    display: flex;
-    justify-content: space-between;
-}
-.search-input{
-    font-family: var(--Monserrat);
-    font-size: 1.1rem;
-    width: 100%;
+
+/* Form */
+
+
+form {
     outline: 0;
-    padding: 0.6rem 0;
-    border: none;
-}
-.search-input::placeholder{
-    text-transform: capitalize;
-}
-.search-btn{
-    width: 40px;
-    font-size: 1.1rem;
-    color: var(--dark);
-    border: none;
-    background: transparent;
+    float: left;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 4px;
+  }
+  
+  form > .textbox {
     outline: 0;
-    cursor: pointer;
+    height: 42px;
+    width: 244px;
+    line-height: 42px;
+    padding: 0 16px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #212121;
+    border: 0;
+    float: left;
+    -webkit-border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px;
+  }
+  
+  form > .textbox:focus {
+    outline: 0;
+    background-color: #FFF;
+  }
+  
+  form > .button {
+    outline: 0;
+    background: none;
+    background-color: rgba(38, 50, 56, 0.8);
+    float: left;
+    height: 42px;
+    width: 42px;
+    text-align: center;
+    line-height: 42px;
+    border: 0;
+    color: #FFF;
+    font-size: 16px;
+    text-rendering: auto;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    -webkit-transition: background-color .4s ease;
+    transition: background-color .4s ease;
+    -webkit-border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  
+  form > .button:hover {
+    background-color: var(--blue);
+  }
+
+@media screen and (min-width: 460px){
+    form{
+        margin-right: 1rem;
+    }
+
 }
+@media screen and (max-width: 460px){
+
+    form {
+        box-shadow: none;
+    }
+    form > .textbox{
+        width: 64%;
+    }
+}
+/* end form */
 
 /* featured */
 .section--header{
@@ -170,9 +213,6 @@ header{
     overflow: hidden;
 }
 
-.post-img img{
-    max-width: 50px;
-}
 .featured-img::after{
     position: absolute;
     content: "";
@@ -260,23 +300,18 @@ header{
     padding: 2px 5px;
     font-size: 14px;	
     cursor: pointer;
+    text-decoration: none;
+}
+
+.tag a{
+    text-decoration: none;
+    color: white;
 }
 
 .tag:active{
     background-color: var(--blue);
 }
 
-.featured_image{
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.post-container{
-    width: 900px;
-    margin: 0 auto;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
 
 .back-button{
     padding: 8px 10px;
@@ -291,22 +326,6 @@ header{
     background-color: #4285f4;
     border-radius: 5px;
 }
-
-
-.author-pic{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-
-@media screen and (max-width: 900px){
-    .post-container{
-        width: 95%;
-    }
-}
-
 
 
 /* footer */

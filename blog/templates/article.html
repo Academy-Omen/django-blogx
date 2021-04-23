@@ -9,6 +9,37 @@
     <!-- Boxicon awesome icon -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{% static 'css/style.css' %}"">
+    <style type="text/css">
+      img{
+        max-width: 100%;
+        object-fit: cover;
+      }
+    
+      .featured_image{
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+    
+      .post-container{
+          width: 900px;
+          margin: 0 auto;
+          padding-top: 20px;
+          padding-bottom: 20px;
+      }
+    
+      .author-pic{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+    
+      @media screen and (max-width: 900px){
+        .post-container{
+          width: 95%;
+        }
+      }
+    </style>
     
   </head>
   <body>
@@ -30,20 +61,20 @@
 
     <!-- start of post -->
     <div class="post-container">
-        <img class="featured_img" src="{% static 'images/sample.jpg' %}">
+        <img class="featured_img" src="{{ article.image.url }}">
         <!-- start article details -->
         <div class="article-info">
-          <div class="article-info-content display-center">
+          <div class="article-info-content">
             <div class="display-center">
-              <img class="author-pic" src="{% static 'images/sample.jpg' %}" alt="">
-              <h6>Omen on 34-56-45</h6>
+              <img class="author-pic" src="{{ article.author.profile_pic.url }}" alt="">
+              <h6>by {{ article.author }} on {{ article.publish|date:"D M Y" }}</h6>
             </div>
             
             <div class="article-meta">
-              <span class="tag">tag</span>
-              <span class="tag">tag</span>
-              <span class="tag">tag</span>
-              <a class="back-button" href="">&laquo View All Articles</a>
+              {% for tag in article.tags.all %}
+              <span class="tag"><a href="#">{{ tag.name }}</a></span>
+              {% endfor %}
+              <a class="back-button" href="{% url 'blog:articles' %}">All Articles</a>
             </div>
           </div>
         </div>
@@ -52,7 +83,7 @@
         <h1>headline</h1>
         <h4>sub_headline</h4>
         <br>
-        <p>body</p>
+        <p>{{ article.body|safe }}</p>
     </div>
     <!-- end of post -->
 
