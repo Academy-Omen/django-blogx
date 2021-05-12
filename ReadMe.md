@@ -1,5 +1,7 @@
 ## Build A Blog With Django
 
+#### [View the Tutorial Video](https://youtu.be/J7UOjUshjyY)
+
 -> Download [starter files for this project](https://github.com/Academy-Omen/django-blogx/tree/starter)
 
 -> Create Virtual environment
